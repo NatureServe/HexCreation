@@ -16,8 +16,6 @@
 # --- Using batch processing, run the tool Feature Class to Feature Class on each layer, creating a new feature class for each
 #     range map in a new gdb. Creating the fcs in ArcGIS pro automatically defaults the display field to be "Display" (created
 #     in this script) and will then allow you to publish to AGOL without manually changing the display field for each layer.
-# --- Update all layer symbology to the following: fill = 000000, fill transparency = 70%, outline = 000000, outline transparency = 0%
-
 
 import arcpy, os, re
 from arcpy.sa import *
@@ -32,13 +30,12 @@ arcpy.CheckOutExtension("spatial")
 
 ## Input Variables
 hexgrid = r"S:\Projects\Ecology\GroupMap_v0pt9\HexCreation\Data\SetupLayers.gdb\nhf_cogs_smoothed_clip" ## UPDATE: with entire 343 hex grid, or extract of area of interest
-#WorkingHabitat = r"S:\Projects\Ecology\GroupMap_v0pt9\Symbology\NVCmap_symbology\IVC_v0p9.gdb\NVC_Groups_v0p9_RemovedPixels_16bitunsig" ## UPDATE: with entire habtiat layer or extract of area of interest
-WorkingHabitat = r"S:\Projects\Ecology\GroupMap_v0pt9\HexCreation\Data\SetupLayers.gdb\NVC_Groups_v0p9_extract"
+WorkingHabitat = r"S:\Projects\Ecology\GroupMap_v0pt9\Symbology\NVCmap_symbology\IVC_v0p9.gdb\NVC_Groups_v0p9_RemovedPixels_16bitunsig" ## UPDATE: with entire habtiat layer or extract of area of interest
+#WorkingHabitat = r"S:\Projects\Ecology\GroupMap_v0pt9\HexCreation\Data\SetupLayers.gdb\NVC_Groups_v0p9_extract"
 
 ## Set environments
 intWorkspace = r"S:\Projects\Ecology\GroupMap_v0pt9\HexCreation\Data\IntermediateTables.gdb" #UPDATE
 intOutputs = r"S:\Projects\Ecology\GroupMap_v0pt9\HexCreation\Data\ExtractedGroups.gdb"#UPDATE
-#finalOutputs = r"S:\Projects\Ecology\GroupMap_v0pt9\QCefforts\_FinalOutput_v0p9.gdb" #UPDATE
 arcpy.env.workspace =  r"S:\Projects\Ecology\GroupMap_v0pt9\HexCreation\Data\SetupLayers.gdb" #UPDATE
 arcpy.env.overwriteOutput =  True
 
@@ -144,22 +141,6 @@ for fc in group_hexes:
 
     # Clean up - remove unnecessary fields
     arcpy.management.DeleteField(fc, ["InPoly_FID", "SimPgnFlag", "MaxSimpTol", "MinSimpTol"])
-
-##   
-##print("===============================================================================")
-##print("4) Merging NVC Group hexes together")
-##print("===============================================================================")
-##
-### create list of feature classes
-##arcpy.env.workspace = intOutputs
-##group_hexes = arcpy.ListFeatureClasses()
-##
-### merge all groups
-##mergedFCs = r"S:\Projects\Ecology\GroupMap_v0pt9\QCefforts\FinalOutput_v0p9.gdb\NVC_GroupsbyHex_v0p9_wCount_v2"
-##arcpy.management.Merge(group_hexes, mergedFCs)
-##
-### clean up - remove unneccesary fields
-###arcpy.management.DeleteField(mergedFCs, ["wheel_id", "grid_id", "InPoly_FID", "SimPgnFlag", "MaxSimpTol", "MinSimpTol"])
 
 current_datetime = datetime.datetime.now()
 timestamp = current_datetime.strftime("%Y-%m-%d %H:%M:%S")

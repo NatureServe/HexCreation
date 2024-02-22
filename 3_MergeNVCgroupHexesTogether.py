@@ -14,8 +14,9 @@ print("Script started at: " + timestamp)
 arcpy.CheckOutExtension("spatial")
 
 ## Input Variables
-hexgrid = r"S:\Projects\Ecology\GroupMap_v0pt9\HexCreation\Data\SetupLayers.gdb\nhf_cogs_smoothed_clip" ## UPDATE: with entire 343 hex grid, or extract of area of interest
-WorkingHabitat = r"S:\Projects\Ecology\GroupMap_v0pt9\HexCreation\Data\SetupLayers.gdb\NVC_Groups_v0p9_extract" ## UPDATE: with entire habtiat layer or extract of area of interest
+hexgrid = r"S:\Projects\Ecology\GroupMap_v0pt9\HexCreation\Data\SetupLayers.gdb\nhf_cogs_smoothed_copy" ## UPDATE: with entire 343 hex grid, or extract of area of interest
+#WorkingHabitat = r"S:\Projects\Ecology\GroupMap_v0pt9\HexCreation\Data\SetupLayers.gdb\NVC_Groups_v0p9_extract" ## UPDATE: with entire habtiat layer or extract of area of interest
+WorkingHabitat = r"S:\Projects\Ecology\GroupMap_v0pt9\Symbology\NVCmap_symbology\IVC_v0p9.gdb\NVC_Groups_v0p9_RemovedPixels_16bitunsig" ## UPDATE: with entire habtiat layer or extract of area of interest
 
 ## Set environments
 intWorkspace = r"S:\Projects\Ecology\GroupMap_v0pt9\HexCreation\Data\IntermediateTables.gdb" #UPDATE
@@ -34,7 +35,7 @@ arcpy.env.workspace = intOutputs
 group_hexes = arcpy.ListFeatureClasses()
 
 # merge all groups
-mergedFCs = r"S:\Projects\Ecology\GroupMap_v0pt9\HexCreation\Data\FinalOutput.gdb\NVC_GroupsbyHex_v0p9_test"
+mergedFCs = r"S:\Projects\Ecology\GroupMap_v0pt9\HexCreation\Data\FinalOutput.gdb\NVC_GroupsbyHex_v0p9"
 arcpy.management.Merge(group_hexes, mergedFCs)
 print("Hexes merged")
 

@@ -6,7 +6,7 @@
 # here: S:\Projects\Ecology\GroupMap_v0pt9\HexCreation
 #
 # Below outlines the steps that are completed during this script:
-# 1.) Tabulate area of habitat codes in each 343 sq mi hex
+# 1.) Tabulate area of habitat codes in each 7 sq mi hex
 # 2.) Extract individual tables by habitat code - listing hexids that overlap that habitat
 # 3.) Loop through habitat code tables and select hexgrid layer by attribute, feature class to feature class to return
 #     hexes where each habitat is found.
@@ -58,7 +58,7 @@ print("=========================================================================
 print("1) Looping through and extracting tables of habitats by hex")
 print("===============================================================================")
 
-## Get a list of unique habitat codes
+## Get a list of unique habitat codes and extract individual tabulate area tables for each habitat
 #TabArea_out = r"S:\Projects\Ecology\GroupMap_v0pt9\QCefforts\Default.gdb\TabArea_GroupinHex" #Un comment this line if you have already ran the tabulate area step above, and comment out the above step
 group_codes = set(row[0] for row in arcpy.da.SearchCursor(TabArea_out, "IVC_Code_N"))
 

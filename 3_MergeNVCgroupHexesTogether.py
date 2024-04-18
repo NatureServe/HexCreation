@@ -20,7 +20,7 @@ WorkingHabitat = r"S:\Projects\Ecology\GroupMap_v0pt9\Symbology\NVCmap_symbology
 
 ## Set environments
 intWorkspace = r"S:\Projects\Ecology\GroupMap_v0pt9\HexCreation\Data\IntermediateTables.gdb" #UPDATE
-intOutputs = r"S:\Projects\Ecology\GroupMap_v0pt9\HexCreation\Data\ExtractedGroups.gdb"#UPDATE
+intOutputs = r"S:\Projects\Ecology\GroupMap_v0pt9\HexCreation\Data\ExtractedGroups_wCount.gdb"#UPDATE
 finalOutputs = r"S:\Projects\Ecology\GroupMap_v0pt9\HexCreation\Data\FinalOutput.gdb" #UPDATE
 arcpy.env.workspace =  r"S:\Projects\Ecology\GroupMap_v0pt9\HexCreation\Data\SetupLayers.gdb" #UPDATE
 arcpy.env.overwriteOutput =  True
